@@ -1,0 +1,64 @@
+<svg width="240" height="240" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="portfolioGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="screenGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#F8FAFC;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E2E8F0;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Fondo circular -->
+  <circle cx="120" cy="120" r="100" fill="url(#portfolioGradient)" opacity="0.08"/>
+  
+  <!-- Monitor/Laptop -->
+  <rect x="60" y="80" width="120" height="80" rx="8" ry="8" fill="#1E293B" stroke="url(#portfolioGradient)" stroke-width="2"/>
+  
+  <!-- Pantalla -->
+  <rect x="65" y="85" width="110" height="70" rx="4" ry="4" fill="url(#screenGradient)"/>
+  
+  <!-- Barra superior del navegador -->
+  <rect x="65" y="85" width="110" height="12" rx="4" ry="4" fill="url(#portfolioGradient)" opacity="0.8"/>
+  
+  <!-- Botones del navegador -->
+  <circle cx="72" cy="91" r="2" fill="#EF4444"/>
+  <circle cx="79" cy="91" r="2" fill="#F59E0B"/>
+  <circle cx="86" cy="91" r="2" fill="#10B981"/>
+  
+  <!-- URL bar -->
+  <rect x="95" y="88" width="70" height="6" rx="3" fill="#F1F5F9" opacity="0.8"/>
+  
+  <!-- Contenido de la página -->
+  <!-- Header -->
+  <rect x="70" y="102" width="95" height="8" rx="2" fill="url(#portfolioGradient)" opacity="0.6"/>
+  
+  <!-- Líneas de contenido -->
+  <rect x="70" y="115" width="70" height="3" rx="1" fill="#64748B" opacity="0.4"/>
+  <rect x="70" y="121" width="85" height="3" rx="1" fill="#64748B" opacity="0.4"/>
+  <rect x="70" y="127" width="60" height="3" rx="1" fill="#64748B" opacity="0.4"/>
+  
+  <!-- Sección de tecnologías (representadas como badges) -->
+  <rect x="70" y="135" width="20" height="6" rx="3" fill="#3B82F6" opacity="0.7"/>
+  <rect x="93" y="135" width="24" height="6" rx="3" fill="#8B5CF6" opacity="0.7"/>
+  <rect x="120" y="135" width="22" height="6" rx="3" fill="#10B981" opacity="0.7"/>
+  
+  <!-- Base del laptop -->
+  <rect x="55" y="160" width="130" height="8" rx="4" ry="4" fill="#374151"/>
+  
+  <!-- Teclado representativo -->
+  <rect x="65" y="163" width="110" height="2" rx="1" fill="#6B7280" opacity="0.6"/>
+  
+  <!-- Código flotante (símbolo de desarrollo) -->
+  <text x="190" y="55" font-family="monospace" font-size="12" fill="url(#portfolioGradient)" opacity="0.7">&lt;/&gt;</text>
+  
+  <!-- Elementos decorativos flotantes -->
+  <circle cx="45" cy="55" r="3" fill="#3B82F6" opacity="0.3"/>
+  <circle cx="195" cy="185" r="4" fill="#8B5CF6" opacity="0.3"/>
+  <circle cx="40" cy="185" r="2.5" fill="#10B981" opacity="0.3"/>
+  
+  <!-- Líneas de código adicionales para más detalle -->
+  <rect x="190" y="65" width="8" height="1" rx="0.5" fill="#3B82F6" opacity="0.4"/>
+  <rect x="200" y="65" width="10" height="1" rx="0.5" fill="#8B5CF6" opacity="0.4"/>
+</svg>

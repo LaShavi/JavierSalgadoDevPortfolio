@@ -1,0 +1,370 @@
+---
+import '../styles/global.css';
+const
+{
+	title = 'Javier Salgado — Portafolio',
+	description = 'Desarrollador .NET & Angular. Portafolio y proyectos.',
+	canonical
+} = Astro.props;
+const siteTitle = 'Javier Salgado';
+
+// Helper para rutas con base path
+function getUrl(path: string) {
+  const base = import.meta.env.BASE_URL;
+  // Asegurar que base termine con / y path empiece con /
+  const normalizedBase = base.endsWith('/') ? base : base + '/';
+  const normalizedPath = path.startsWith('/') ? path.slice(1) : path;
+  return normalizedBase + normalizedPath;
+}
+---
+<!DOCTYPE html>
+<html lang="es" class="bg-gray-50 text-gray-900">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href={getUrl('/favicon.svg')} /> {canonical &&
+    <link rel="canonical" href={canonical} />}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style is:global>
+      :root {
+        color-scheme: light dark;
+      }
+
+      .container {
+        max-width: 1000px;
+      }
+      
+      /* Indicador de debug removido - ya no es necesario */
+      
+      /* FORZAR estilos oscuros para debug */
+      html.dark body {
+        background-color: #111827 !important;
+        color: #f9fafb !important;
+      }
+      
+      html.dark header {
+        background-color: rgba(17, 24, 39, 0.8) !important;
+        border-color: rgba(255, 255, 255, 0.1) !important;
+      }
+      
+      /* FORZAR estilos para etiquetas de tecnologías en modo oscuro */
+      html.dark .bg-blue-100 {
+        background-color: rgba(30, 58, 138, 0.3) !important;
+      }
+      html.dark .text-blue-700 {
+        color: #93c5fd !important;
+      }
+      
+      html.dark .bg-purple-100 {
+        background-color: rgba(88, 28, 135, 0.3) !important;
+      }
+      html.dark .text-purple-700 {
+        color: #c4b5fd !important;
+      }
+      
+      html.dark .bg-green-100 {
+        background-color: rgba(20, 83, 45, 0.3) !important;
+      }
+      html.dark .text-green-700 {
+        color: #86efac !important;
+      }
+      
+      /* Mejorar sección de tecnologías en modo oscuro */
+      html.dark .bg-gray-100 {
+        background-color: rgba(55, 65, 81, 0.5) !important;
+      }
+      
+      /* Mejorar textos en modo oscuro - más claros */
+      html.dark .text-gray-600 {
+        color: #d1d5db !important; /* gray-300 más claro */
+      }
+      
+      html.dark .text-gray-700 {
+        color: #e5e7eb !important; /* gray-200 más claro */
+      }
+      
+      /* Mejorar botón de GitHub en modo oscuro */
+      html.dark .border-gray-300 {
+        border-color: #6b7280 !important; /* gray-500 */
+      }
+      
+      html.dark .hover\:bg-gray-50:hover {
+        background-color: rgba(75, 85, 99, 0.3) !important; /* gray-600 translúcido */
+      }
+      
+      /* Mejorar contraste general de textos secundarios */
+      html.dark .text-gray-400 {
+        color: #d1d5db !important; /* Más claro que el gray-400 por defecto */
+      }
+      
+      /* Mejorar todos los botones secundarios en modo oscuro */
+      html.dark .border-2.border-gray-300 {
+        border-color: #4b5563 !important; /* gray-600 más visible */
+        background-color: rgba(31, 41, 55, 0.3) !important; /* gray-800 sutil */
+        backdrop-filter: blur(8px);
+      }
+      
+      html.dark .border-2.border-gray-300:hover {
+        background-color: rgba(55, 65, 81, 0.5) !important; /* gray-700 al hover */
+        border-color: #6b7280 !important; /* gray-500 al hover */
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+      
+      /* Mejorar texto de botones secundarios */
+      html.dark .text-gray-700.dark\:text-gray-300 {
+        color: #e5e7eb !important; /* gray-200 más claro */
+      }
+      
+      /* Mejorar legibilidad de párrafos largos */
+      html.dark p {
+        color: #d1d5db !important; /* gray-300 para mejor legibilidad */
+        line-height: 1.7; /* Espaciado entre líneas más cómodo */
+      }
+      
+      /* Asegurar que los títulos sean bien visibles */
+      html.dark h1, html.dark h2, html.dark h3 {
+        color: #f9fafb !important; /* gray-50 casi blanco */
+      }
+      
+      /* Mejorar tags de tecnología en modo oscuro */
+      html.dark .bg-gray-100.text-gray-800 {
+        background-color: #374151 !important; /* gray-700 fondo más oscuro */
+        color: #e5e7eb !important; /* gray-200 texto más claro */
+        border: 1px solid #4b5563 !important; /* gray-600 borde sutil */
+      }
+      
+      /* Mejorar hover de tags de tecnología */
+      html.dark .bg-gray-100.text-gray-800:hover {
+        background-color: #4b5563 !important; /* gray-600 al hacer hover */
+        color: #f3f4f6 !important; /* gray-100 texto aún más claro */
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+      
+      /* Mejorar navegación en modo oscuro */
+      html.dark nav a {
+        color: #e5e7eb !important; /* gray-200 */
+        transition: all 0.3s ease;
+      }
+      
+      html.dark nav a:hover {
+        color: #f9fafb !important; /* gray-50 al hacer hover */
+        text-shadow: 0 0 8px rgba(139, 92, 246, 0.3); /* Sutil glow púrpura */
+      }
+      
+      /* Mejorar contraste de enlaces activos */
+      html.dark nav a.router-link-active,
+      html.dark nav a[aria-current="page"] {
+        color: #a78bfa !important; /* violet-300 para enlace activo */
+        border-bottom-color: #a78bfa !important;
+      }
+      
+      /* Mejorar tarjetas de proyectos en modo oscuro */
+      html.dark article {
+        background-color: #1f2937 !important; /* gray-800 más suave */
+        border-color: #374151 !important; /* gray-700 borde más visible */
+      }
+      
+      html.dark article:hover {
+        background-color: #252f3f !important; /* Ligero cambio al hover */
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4) !important;
+      }
+      
+      /* Asegurar que los títulos de proyectos sean bien visibles */
+      html.dark article h3 {
+        color: #f9fafb !important; /* gray-50 */
+      }
+      
+      /* Mejorar descripción de proyectos */
+      html.dark article p {
+        color: #d1d5db !important; /* gray-300 */
+        line-height: 1.6;
+      }
+      
+      /* Mejorar footer en modo oscuro */
+      html.dark footer {
+        color: #9ca3af !important; /* gray-400 */
+      }
+      
+      /* Mejorar sección CTA en modo oscuro */
+      html.dark .bg-gradient-to-r.from-blue-50.to-purple-50 {
+        background: linear-gradient(to right, rgba(30, 58, 138, 0.2), rgba(91, 33, 182, 0.2)) !important;
+        border: 1px solid rgba(55, 65, 81, 0.3) !important;
+      }
+      
+      /* Asegurar que todos los textos descriptivos sean legibles */
+      html.dark .text-gray-600 {
+        color: #d1d5db !important; /* gray-300 */
+      }
+      
+      /* Forzar colores de badges de tecnologías en modo oscuro */
+      /* Backend - Azul */
+      html.dark .bg-blue-100.text-blue-700 {
+        background-color: #1d4ed8 !important; /* blue-700 */
+        color: #dbeafe !important; /* blue-100 */
+      }
+      
+      /* Frontend - Morado */
+      html.dark .bg-purple-100.text-purple-700 {
+        background-color: #7c3aed !important; /* purple-700 */
+        color: #f3e8ff !important; /* purple-100 */
+      }
+      
+      /* Herramientas - Verde */
+      html.dark .bg-green-100.text-green-700 {
+        background-color: #15803d !important; /* green-700 */
+        color: #dcfce7 !important; /* green-100 */
+      }
+      
+      /* Forzar fondos de contenedores de tecnologías en modo oscuro */
+      /* Contenedor exterior de la sección de tecnologías con gradiente */
+      html.dark .bg-gradient-to-r.from-blue-50.to-purple-50 {
+        background: #1f2937 !important; /* gray-800 sólido en modo oscuro */
+      }
+      
+      /* Contenedor interior donde están las tecnologías */
+      html.dark .space-y-12 {
+        background-color: transparent !important; /* Sin fondo específico */
+      }
+      
+      /* CSS limpio - volvemos al diseño original que funcionaba bien */
+    </style>
+  </head>
+  <body class="min-h-screen antialiased bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-500">
+    <header class="sticky top-0 backdrop-blur border-b border-black/5 dark:border-white/10 bg-white/80 dark:bg-gray-900/80 z-50 transition-colors duration-500">
+      <nav class="mx-auto container px-4 py-3 flex items-center justify-between">
+        <a href={getUrl('/')} class="font-extrabold tracking-tight">{siteTitle}</a>
+        <div class="flex items-center gap-2 sm:gap-3 md:gap-4 text-xs sm:text-sm">
+          <a class="hover:underline px-1" href={getUrl('/')}>Inicio</a>
+          <a class="hover:underline px-1" href={getUrl('/projects')}>Proyectos</a>
+          <a class="hover:underline px-1" href="https://github.com/LaShavi" target="_blank">GitHub</a>
+          <a class="hover:underline px-1" href="https://www.linkedin.com/in/javier-salgado-arismendy-961956122" target="_blank">LinkedIn</a>
+          <button 
+            id="themeToggle" 
+            class="p-1.5 sm:p-2 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-200 ease-in-out ml-1 sm:ml-2"
+            aria-label="Alternar tema"
+            title="Cambiar tema"
+          >
+            <!-- Icono de sol (tema claro activo) -->
+            <svg class="w-4 h-4 sm:w-5 sm:h-5 text-amber-500 dark:hidden" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+            </svg>
+            <!-- Icono de luna (tema oscuro activo) -->
+            <svg class="w-4 h-4 sm:w-5 sm:h-5 text-blue-400 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+          </button>          
+        </div>
+      </nav>
+    </header>
+    <main class="mx-auto container px-4 py-10">
+      <slot />
+    </main>
+    <footer class="mx-auto container px-4 pb-10 text-sm text-gray-600 dark:text-gray-400"> © {new Date().getFullYear()} {siteTitle}. Hecho con Astro + Tailwind. </footer>
+    <!-- Script inline para inicialización inmediata del tema -->
+    <script is:inline>
+      // Función para aplicar tema inmediatamente
+      (function() {
+        try {
+          const stored = localStorage.getItem('theme');
+          const html = document.documentElement;
+          
+          // Modo oscuro por defecto si no hay preferencia guardada
+          const shouldBeDark = stored ? stored === 'dark' : true;
+          
+          if (shouldBeDark) {
+            html.classList.add('dark');
+            html.style.colorScheme = 'dark';
+          } else {
+            html.classList.remove('dark');
+            html.style.colorScheme = 'light';
+          }
+          
+          // Guardar tema por defecto si no existe
+          if (!stored) {
+            localStorage.setItem('theme', 'dark');
+          }
+          
+          console.log('Tema aplicado:', shouldBeDark ? 'dark' : 'light', 'Classes:', html.className);
+        } catch (e) {
+          console.error('Error inicializando tema:', e);
+        }
+      })();
+    </script>
+    
+    <script>
+      // Función para alternar tema
+      function toggleTheme() {
+        try {
+          const root = document.documentElement;
+          const wasDark = root.classList.contains('dark');
+          const nowDark = !wasDark;
+          
+          if (nowDark) {
+            root.classList.add('dark');
+            root.style.colorScheme = 'dark';
+          } else {
+            root.classList.remove('dark');
+            root.style.colorScheme = 'light';
+          }
+          
+          localStorage.setItem('theme', nowDark ? 'dark' : 'light');
+          console.log('Tema cambiado a:', nowDark ? 'dark' : 'light', 'Classes:', root.className);
+          
+          // Animación del botón
+          const button = document.getElementById('themeToggle');
+          if (button) {
+            button.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+              button.style.transform = 'scale(1)';
+            }, 100);
+          }
+        } catch (e) {
+          console.error('Error al cambiar tema:', e);
+        }
+      }
+
+      // Configurar eventos del tema
+      function setupTheme() {
+        console.log('Configurando eventos del tema...');
+        const button = document.getElementById('themeToggle');
+        
+        if (button) {
+          console.log('Botón de tema encontrado');
+          button.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleTheme();
+          });
+        } else {
+          console.error('Botón de tema NO encontrado');
+        }
+        
+        // Responder a cambios en preferencia del sistema
+        if (window.matchMedia) {
+          window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+              const root = document.documentElement;
+              if (e.matches) {
+                root.classList.add('dark');
+              } else {
+                root.classList.remove('dark');
+              }
+              console.log('Tema cambiado por sistema:', e.matches ? 'dark' : 'light');
+            }
+          });
+        }
+      }
+
+      // Inicializar cuando el DOM esté listo
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupTheme);
+      } else {
+        setupTheme();
+      }
+    </script>
+  </body>
+</html>

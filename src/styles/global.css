@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+/* Variables CSS personalizadas */
+:root {
+  --transition-duration: 300ms;
+  --border-radius: 8px;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Modo oscuro */
+.dark {
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Transiciones globales suaves */
+* {
+  transition-property: color, background-color, border-color, box-shadow;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: ease-in-out;
+}
+
+/* Mejorar scrollbar en modo oscuro */
+.dark ::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #374151;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #6b7280;
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* Selección de texto personalizada */
+::selection {
+  background: #3b82f6;
+  color: white;
+}
+
+.dark ::selection {
+  background: #60a5fa;
+  color: #1f2937;
+}

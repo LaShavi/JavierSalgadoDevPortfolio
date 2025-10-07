@@ -1,0 +1,23 @@
+{
+  "homepage": "https://LaShavi.github.io/JavierSalgadoDevPortfolio/",
+  "name": "javiersalgadodevportfolio",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "format": "prettier --write .",
+    "lint": "astro check",
+    "clean": "powershell -Command \"Remove-Item -Recurse -Force dist -ErrorAction SilentlyContinue\"",
+    "start": "astro dev --host",
+    "deploy": "npm run build && npm run preview"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.14",
+    "astro": "^5.14.1",
+    "tailwindcss": "^4.1.14"
+  }
+}
