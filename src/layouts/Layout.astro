@@ -243,6 +243,7 @@ function getUrl(path: string) {
           <a class="hover:underline px-1" href={getUrl('/projects')}>Proyectos</a>
           <a class="hover:underline px-1" href="https://github.com/LaShavi" target="_blank">GitHub</a>
           <a class="hover:underline px-1" href="https://www.linkedin.com/in/javier-salgado-arismendy-961956122" target="_blank">LinkedIn</a>
+
           <button 
             id="themeToggle" 
             class="p-1.5 sm:p-2 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-200 ease-in-out ml-1 sm:ml-2"
@@ -250,14 +251,11 @@ function getUrl(path: string) {
             title="Cambiar tema"
           >
             <!-- Icono de sol (tema claro activo) -->
-            <svg class="w-4 h-4 sm:w-5 sm:h-5 text-amber-500 dark:hidden" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
-            </svg>
+            <img src={getUrl('/images/icon-sun.svg')} alt="Sol" class="w-4 h-4 sm:w-5 sm:h-5 dark:hidden" />
             <!-- Icono de luna (tema oscuro activo) -->
-            <svg class="w-4 h-4 sm:w-5 sm:h-5 text-blue-400 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-            </svg>
-          </button>          
+            <img src={getUrl('/images/icon-moon.svg')} alt="Luna" class="w-4 h-4 sm:w-5 sm:h-5 hidden dark:block" />
+          </button>
+
         </div>
       </nav>
     </header>
@@ -313,7 +311,6 @@ function getUrl(path: string) {
           }
           
           localStorage.setItem('theme', nowDark ? 'dark' : 'light');
-          console.log('Tema cambiado a:', nowDark ? 'dark' : 'light', 'Classes:', root.className);
           
           // Animación del botón
           const button = document.getElementById('themeToggle');
@@ -322,6 +319,22 @@ function getUrl(path: string) {
             setTimeout(() => {
               button.style.transform = 'scale(1)';
             }, 100);
+          }
+
+          // LOGS DE DEPURACIÓN SOBRE ICONOS Y CLASES
+          const sun = document.querySelector('img[alt="Sol"]');
+          const moon = document.querySelector('img[alt="Luna"]');
+          const html = document.documentElement;          
+
+          // Alternar manualmente la clase 'hidden' entre los iconos
+          if (sun && moon) {
+            if (html.classList.contains('dark')) {
+              sun.classList.add('hidden');
+              moon.classList.remove('hidden');
+            } else {
+              sun.classList.remove('hidden');
+              moon.classList.add('hidden');
+            }
           }
         } catch (e) {
           console.error('Error al cambiar tema:', e);
