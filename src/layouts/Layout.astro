@@ -28,7 +28,7 @@ function getUrl(path: string) {
     <link rel="canonical" href={canonical} />}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href={getUrl('/src/styles/theme-overrides.css')}>
+  <link rel="stylesheet" href={getUrl('/styles/theme-overrides.css')}>
   </head>
   <body class="min-h-screen antialiased bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-500">
     
@@ -64,6 +64,6 @@ function getUrl(path: string) {
     <footer class="mx-auto container px-4 pb-10 text-sm text-gray-600 dark:text-gray-400"> © {new Date().getFullYear()} {siteTitle}. Hecho con Astro + Tailwind. </footer>
     
     <!-- Llamamos Script con logica -->
-    <script src={getUrl('/src/scripts/theme-toggle.js')} defer></script>
+  <script src={getUrl('/scripts/theme-toggle.js')} defer></script>
   </body>
 </html>
