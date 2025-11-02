@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /JavierSalgadoDevPortfolio/
+Disallow: 
+
+Sitemap: https://javiersalgado.dev/JavierSalgadoDevPortfolio/sitemap.xml
