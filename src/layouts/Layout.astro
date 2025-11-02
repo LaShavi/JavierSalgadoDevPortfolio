@@ -27,11 +27,11 @@ const siteTitle = 'Javier Salgado';
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         const theme = stored || (prefersDark ? 'dark' : 'light');
         
-        console.log('🎨 Inicializando tema:', {
-          stored: stored,
-          prefersDark: prefersDark,
-          theme: theme
-        });
+        // console.log('🎨 Inicializando tema:', {
+        //   stored: stored,
+        //   prefersDark: prefersDark,
+        //   theme: theme
+        // });
         
         if (theme === 'dark') {
           document.documentElement.classList.add('dark');

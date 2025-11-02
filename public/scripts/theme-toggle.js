@@ -9,18 +9,18 @@ function toggleTheme() {
   const root = document.documentElement;
   const isDark = root.classList.contains('dark');
   
-  console.log('🔄 Toggle theme - Estado actual:', isDark ? 'dark' : 'light');
+  // console.log('🔄 Toggle theme - Estado actual:', isDark ? 'dark' : 'light');
   
   if (isDark) {
     root.classList.remove('dark');
     root.style.colorScheme = 'light';
     localStorage.setItem('theme', 'light');
-    console.log('☀️ Cambiado a modo claro');
+    // console.log('☀️ Cambiado a modo claro');
   } else {
     root.classList.add('dark');
     root.style.colorScheme = 'dark';
     localStorage.setItem('theme', 'dark');
-    console.log('🌙 Cambiado a modo oscuro');
+    // console.log('🌙 Cambiado a modo oscuro');
   }
   
   // Animación sutil del botón
@@ -36,9 +36,9 @@ function setupTheme() {
   const button = document.getElementById('themeToggle');
   if (button) {
     button.addEventListener('click', toggleTheme);
-    console.log('✅ Theme toggle configurado correctamente');
+    // console.log('✅ Theme toggle configurado correctamente');
   } else {
-    console.warn('⚠️ No se encontró el botón themeToggle');
+    // console.warn('⚠️ No se encontró el botón themeToggle');
   }
   
   // Responder a cambios en preferencias del sistema (solo si no hay preferencia guardada)
