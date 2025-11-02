@@ -19,6 +19,8 @@ const siteTitle = 'Javier Salgado';
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href={getUrl('/favicon.svg')} />
     <link rel="sitemap" href={getUrl('/sitemap.xml')} />
+    <link rel="preload" as="image" href={getUrl('/images/icon-sun.svg')} />
+    <link rel="preload" as="image" href={getUrl('/images/icon-moon.svg')} />
     {canonical && <link rel="canonical" href={canonical} />}
     
     <!-- Script inline para evitar flash de contenido (debe ejecutarse ANTES del render) -->
