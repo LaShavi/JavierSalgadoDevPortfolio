@@ -1,15 +1,7 @@
 --- 
 import Layout from '../layouts/Layout.astro'; 
 import ProjectCard from '../components/ProjectCard.astro';
-
-// Helper para rutas con base path
-function getUrl(path: string) {
-  const base = import.meta.env.BASE_URL;
-  // Asegurar que base termine con / y path empiece con /
-  const normalizedBase = base.endsWith('/') ? base : base + '/';
-  const normalizedPath = path.startsWith('/') ? path.slice(1) : path;
-  return normalizedBase + normalizedPath;
-} 
+import { getUrl } from '../utils/url';
 
 // Lista de proyectos
 const projects = [
@@ -64,24 +56,24 @@ const projects = [
 <Layout title="Proyectos — Javier Salgado">
   <!-- Header Section -->
   <section class="text-center py-16 space-y-6">
-    <h1 class="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 bg-clip-text text-transparent">
+    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold bg-gradient-to-r from-blue-500 via-purple-500 to-blue-600 bg-clip-text text-transparent">
       Mis Proyectos
     </h1>
-    <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+    <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
       Una selección de proyectos que demuestran mis habilidades en desarrollo full stack, 
       desde APIs robustas hasta interfaces de usuario intuitivas.
     </p>
-    <div class="flex flex-wrap gap-3 justify-center pt-4">
-      <span class="px-4 py-2 text-sm bg-blue-100 dark:bg-blue-800/40 text-blue-700 dark:text-blue-200 rounded-full border dark:border-blue-600/30 hover:bg-blue-200 dark:hover:bg-blue-700/50 transition-colors duration-200">
+    <div class="flex flex-wrap gap-3 justify-center pt-6">
+      <span class="px-4 py-2 text-sm font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full border border-blue-200 dark:border-blue-700 hover:bg-blue-200 dark:hover:bg-blue-900/50 hover:scale-105 transition-all cursor-default">
         .NET Core
       </span>
-      <span class="px-4 py-2 text-sm bg-purple-100 dark:bg-purple-800/40 text-purple-700 dark:text-purple-200 rounded-full border dark:border-purple-600/30 hover:bg-purple-200 dark:hover:bg-purple-700/50 transition-colors duration-200">
+      <span class="px-4 py-2 text-sm font-medium bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full border border-purple-200 dark:border-purple-700 hover:bg-purple-200 dark:hover:bg-purple-900/50 hover:scale-105 transition-all cursor-default">
         Angular
       </span>
-      <span class="px-4 py-2 text-sm bg-green-100 dark:bg-green-800/40 text-green-700 dark:text-green-200 rounded-full border dark:border-green-600/30 hover:bg-green-200 dark:hover:bg-green-700/50 transition-colors duration-200">
+      <span class="px-4 py-2 text-sm font-medium bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full border border-green-200 dark:border-green-700 hover:bg-green-200 dark:hover:bg-green-900/50 hover:scale-105 transition-all cursor-default">
         TypeScript
       </span>
-      <span class="px-4 py-2 text-sm bg-orange-100 dark:bg-orange-800/40 text-orange-700 dark:text-orange-200 rounded-full border dark:border-orange-600/30 hover:bg-orange-200 dark:hover:bg-orange-700/50 transition-colors duration-200">
+      <span class="px-4 py-2 text-sm font-medium bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-full border border-orange-200 dark:border-orange-700 hover:bg-orange-200 dark:hover:bg-orange-900/50 hover:scale-105 transition-all cursor-default">
         SQL Server
       </span>
     </div>
@@ -97,45 +89,47 @@ const projects = [
   </section>
 
   <!-- CTA Section -->
-  <section class="text-center py-8 sm:py-12 lg:py-16 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-xl sm:rounded-2xl mt-8 sm:mt-12 lg:mt-16 mx-2 sm:mx-0">
+  <section class="text-center py-12 sm:py-16 lg:py-20 bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl mt-12 sm:mt-16 lg:mt-20">
     <div class="px-4 sm:px-6 lg:px-8">
-      <div class="space-y-4 sm:space-y-6">
+      <div class="space-y-6">
         <!-- Ícono decorativo -->
-        <div class="flex justify-center mb-4">
-          <div class="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-            <svg class="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="flex justify-center">
+          <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
             </svg>
           </div>
         </div>
         
-        <h2 class="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-gray-100">
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-gray-100">
           ¿Tienes un proyecto en mente?
         </h2>
-        <p class="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-300 max-w-lg mx-auto leading-relaxed">
+        <p class="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
           Me encanta trabajar en nuevos desafíos. Hablemos sobre cómo puedo ayudarte a crear algo increíble.
         </p>
         
-        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center pt-2 sm:pt-4">
+        <div class="flex flex-col sm:flex-row gap-4 justify-center pt-6">
           <a 
             href="https://www.linkedin.com/in/javier-salgado-arismendy-961956122" 
             target="_blank"
-            class="inline-flex items-center justify-center px-8 py-3 bg-blue-600 dark:bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 dark:hover:bg-blue-500 transform hover:-translate-y-0.5 transition-all duration-300 shadow-md hover:shadow-lg text-sm sm:text-base min-w-[160px]"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 hover:scale-105 transition-all shadow-lg hover:shadow-xl"
           >
             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"></path>
             </svg>
-            Contactar
+            Contactar en LinkedIn
           </a>
           <a 
             href="https://github.com/LaShavi" 
             target="_blank"
-            class="inline-flex items-center justify-center px-8 py-3 border-2 border-gray-300 dark:border-gray-500 text-gray-700 dark:text-gray-200 font-semibold rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-400 dark:hover:border-gray-400 transform hover:-translate-y-0.5 transition-all duration-300 shadow-md hover:shadow-lg text-sm sm:text-base min-w-[160px]"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center px-8 py-3 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 font-semibold rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 hover:border-gray-400 dark:hover:border-gray-500 hover:scale-105 transition-all shadow-lg hover:shadow-xl"
           >
             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
             </svg>
-            Ver en GitHub
+            Ver GitHub
           </a>
         </div>
       </div>

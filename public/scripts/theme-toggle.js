@@ -1,84 +1,62 @@
-// theme-toggle.js
-// Manejo de tema oscuro/claro y toggle para el portafolio de Javier Salgado
+/**
+ * Theme Toggle Script - Portfolio Javier Salgado
+ * Manejo de tema oscuro/claro con persistencia en localStorage
+ * Nota: La inicialización del tema está en un script inline en <head> para evitar flash
+ */
 
-(function() {
-  try {
-    const stored = localStorage.getItem('theme');
-    const html = document.documentElement;
-    const shouldBeDark = stored ? stored === 'dark' : true;
-    if (shouldBeDark) {
-      html.classList.add('dark');
-      html.style.colorScheme = 'dark';
-    } else {
-      html.classList.remove('dark');
-      html.style.colorScheme = 'light';
-    }
-    if (!stored) {
-      localStorage.setItem('theme', 'dark');
-    }
-  } catch (e) {
-    console.error('Error inicializando tema:', e);
-  }
-})();
-
+// Función para alternar el tema
 function toggleTheme() {
-  try {
-    const root = document.documentElement;
-    const wasDark = root.classList.contains('dark');
-    const nowDark = !wasDark;
-    if (nowDark) {
-      root.classList.add('dark');
-      root.style.colorScheme = 'dark';
-    } else {
-      root.classList.remove('dark');
-      root.style.colorScheme = 'light';
-    }
-    localStorage.setItem('theme', nowDark ? 'dark' : 'light');
-    const button = document.getElementById('themeToggle');
-    if (button) {
-      button.style.transform = 'scale(0.95)';
-      setTimeout(() => {
-        button.style.transform = 'scale(1)';
-      }, 100);
-    }
-    const sun = document.querySelector('img[alt="Sol"]');
-    const moon = document.querySelector('img[alt="Luna"]');
-    if (sun && moon) {
-      if (root.classList.contains('dark')) {
-        sun.classList.add('hidden');
-        moon.classList.remove('hidden');
-      } else {
-        sun.classList.remove('hidden');
-        moon.classList.add('hidden');
-      }
-    }
-  } catch (e) {
-    console.error('Error al cambiar tema:', e);
+  const root = document.documentElement;
+  const isDark = root.classList.contains('dark');
+  
+  console.log('🔄 Toggle theme - Estado actual:', isDark ? 'dark' : 'light');
+  
+  if (isDark) {
+    root.classList.remove('dark');
+    root.style.colorScheme = 'light';
+    localStorage.setItem('theme', 'light');
+    console.log('☀️ Cambiado a modo claro');
+  } else {
+    root.classList.add('dark');
+    root.style.colorScheme = 'dark';
+    localStorage.setItem('theme', 'dark');
+    console.log('🌙 Cambiado a modo oscuro');
+  }
+  
+  // Animación sutil del botón
+  const button = document.getElementById('themeToggle');
+  if (button) {
+    button.style.transform = 'scale(0.9)';
+    setTimeout(() => button.style.transform = '', 100);
   }
 }
 
+// Configuración de eventos
 function setupTheme() {
   const button = document.getElementById('themeToggle');
   if (button) {
-    button.addEventListener('click', (e) => {
-      e.preventDefault();
-      toggleTheme();
-    });
+    button.addEventListener('click', toggleTheme);
+    console.log('✅ Theme toggle configurado correctamente');
+  } else {
+    console.warn('⚠️ No se encontró el botón themeToggle');
   }
-  if (window.matchMedia) {
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-      if (!localStorage.getItem('theme')) {
-        const root = document.documentElement;
-        if (e.matches) {
-          root.classList.add('dark');
-        } else {
-          root.classList.remove('dark');
-        }
+  
+  // Responder a cambios en preferencias del sistema (solo si no hay preferencia guardada)
+  const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+  mediaQuery.addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme')) {
+      if (e.matches) {
+        document.documentElement.classList.add('dark');
+        document.documentElement.style.colorScheme = 'dark';
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.style.colorScheme = 'light';
       }
-    });
-  }
+    }
+  });
 }
 
+// Inicializar cuando el DOM esté listo
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', setupTheme);
 } else {

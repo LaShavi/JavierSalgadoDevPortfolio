@@ -1,49 +1,71 @@
 @import "tailwindcss";
 
-/* Variables CSS personalizadas */
+/* Configuración de dark mode para Tailwind v4 */
+@variant dark (.dark &);
+
+/* Variables CSS para consistencia */
 :root {
-  --transition-duration: 300ms;
-  --border-radius: 8px;
-  --shadow-color: rgba(0, 0, 0, 0.1);
+  --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+  color-scheme: light dark;
 }
 
-/* Modo oscuro */
-.dark {
-  --shadow-color: rgba(0, 0, 0, 0.3);
+/* Scrollbar personalizada (solo en navegadores webkit) */
+::-webkit-scrollbar {
+  width: 10px;
 }
 
-/* Transiciones globales suaves */
-* {
-  transition-property: color, background-color, border-color, box-shadow;
-  transition-duration: var(--transition-duration);
-  transition-timing-function: ease-in-out;
-}
-
-/* Mejorar scrollbar en modo oscuro */
-.dark ::-webkit-scrollbar {
-  width: 8px;
+::-webkit-scrollbar-track {
+  background-color: rgb(243 244 246);
 }
 
 .dark ::-webkit-scrollbar-track {
-  background: #374151;
+  background-color: rgb(31 41 55);
 }
 
-.dark ::-webkit-scrollbar-thumb {
-  background: #6b7280;
+::-webkit-scrollbar-thumb {
+  background-color: rgb(209 213 219);
   border-radius: 4px;
 }
 
-.dark ::-webkit-scrollbar-thumb:hover {
-  background: #9ca3af;
+.dark ::-webkit-scrollbar-thumb {
+  background-color: rgb(75 85 99);
 }
 
-/* Selección de texto personalizada */
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(156 163 175);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(107 114 128);
+}
+
+/* Selección de texto con colores del brand */
 ::selection {
-  background: #3b82f6;
+  background-color: rgb(59 130 246);
   color: white;
 }
 
-.dark ::selection {
-  background: #60a5fa;
-  color: #1f2937;
+/* Transiciones suaves solo en elementos interactivos */
+a, button, [role="button"] {
+  transition: all 0.2s var(--transition-timing);
+}
+
+/* Asegurar scroll suave */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Mejora de accesibilidad: respetar preferencias de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
 }
