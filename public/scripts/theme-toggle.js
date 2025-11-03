@@ -9,8 +9,6 @@ function toggleTheme() {
   const root = document.documentElement;
   const isDark = root.classList.contains('dark');
   
-  // console.log('🔄 Toggle theme - Estado actual:', isDark ? 'dark' : 'light');
-  
   if (isDark) {
     root.classList.remove('dark');
     root.style.colorScheme = 'light';
@@ -33,13 +31,8 @@ function toggleTheme() {
 
 // Configuración de eventos
 function setupTheme() {
-  const button = document.getElementById('themeToggle');
-  if (button) {
-    button.addEventListener('click', toggleTheme);
-    // console.log('✅ Theme toggle configurado correctamente');
-  } else {
-    // console.warn('⚠️ No se encontró el botón themeToggle');
-  }
+  // El evento de click ya está en el onclick del HTML, no necesitamos addEventListener
+  // Esto evita duplicar el evento
   
   // Responder a cambios en preferencias del sistema (solo si no hay preferencia guardada)
   const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');

@@ -1,0 +1,66 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "projects": "Proyectos",
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
+  },
+  "theme": {
+    "light": "Modo claro",
+    "dark": "Modo oscuro"
+  },
+  "404": {
+    "title": "Página no encontrada",
+    "message": "Ups, no encontré esa ruta.",
+    "button": "Volver al inicio"
+  },
+  "home": {
+    "title": "Javier Salgado — Desarrollador Full Stack",
+    "subtitle": "Desarrollador Full Stack .NET & Angular",
+    "description1": "Apasionado por crear soluciones tecnológicas innovadoras y experiencias digitales excepcionales. Especializado en desarrollo backend con .NET y frontend moderno con Angular.",
+    "description2": "Transformo ideas en código eficiente, escalable y mantenible, siempre buscando las mejores prácticas y tecnologías emergentes.",
+    "cta_projects": "Ver Proyectos",
+    "cta_github": "GitHub",
+    "skills_title": "Tecnologías & Herramientas",
+    "backend": "Backend",
+    "frontend": "Frontend",
+    "tools": "Herramientas",
+    "about_title": "Sobre Mí",
+    "about_p1": "Soy un desarrollador full stack con una sólida experiencia en el ecosistema Microsoft y tecnologías web modernas. Mi enfoque se centra en crear aplicaciones robustas, escalables y con una excelente experiencia de usuario.",
+    "about_p2": "Disfruto trabajando tanto en el backend, diseñando APIs eficientes y arquitecturas sólidas, como en el frontend, creando interfaces intuitivas y responsivas que deleiten a los usuarios.",
+    "about_p3": "Siempre estoy explorando nuevas tecnologías y mejores prácticas, manteniendo un equilibrio entre la innovación y la estabilidad en mis proyectos.",
+    "about_cta": "Conectemos"
+  },
+  "projects": {
+    "title": "Mis Proyectos",
+    "subtitle": "Una selección de proyectos que demuestran mis habilidades en desarrollo full stack, desde APIs robustas hasta interfaces de usuario intuitivas.",
+    "tags": {
+      "netcore": ".NET Core",
+      "angular": "Angular",
+      "typescript": "TypeScript",
+      "sqlserver": "SQL Server"
+    },
+    "cta_title": "¿Quieres conocer más?",
+    "cta_description": "Revisa mis repositorios en GitHub para ver más proyectos y contribuciones a la comunidad.",
+    "cta_button": "Visitar GitHub",
+    "demo": "Ver Demo",
+    "code": "Ver Código",
+    "contact_linkedin": "Contactar en LinkedIn",
+    "view_github": "Ver GitHub",
+    "projects": {
+      "portfolio": {
+        "title": "Portafolio Personal",
+        "description": "Este mismo sitio web desarrollado con Astro y Tailwind CSS. Incluye sistema de tema oscuro/claro, diseño responsivo, navegación optimizada para GitHub Pages y arquitectura de componentes moderna."
+      },
+      "decision_tree": {
+        "title": "Calculadora de Árbol de Decisiones",
+        "description": "Aplicación web para el cálculo y visualización de árboles de decisiones, permitiendo a los usuarios definir criterios y opciones de manera interactiva."
+      }
+    }
+  },
+  "footer": {
+    "copyright": "© {year} Javier Salgado. Hecho con",
+    "astro": "Astro",
+    "tailwind": "Tailwind CSS"
+  }
+}

@@ -1,0 +1,28 @@
+--- 
+import Layout from '../../layouts/Layout.astro';
+import { getUrl } from '../../utils/url';
+import { getTranslation, type Language, SUPPORTED_LANGUAGES } from '../../i18n';
+import { isValidLanguage } from '../../i18n';
+
+export function getStaticPaths() {
+  return SUPPORTED_LANGUAGES.map(lang => ({
+    params: { lang },
+  }));
+}
+
+const lang = Astro.params.lang as Language;
+
+// Validar que el idioma sea válido
+if (!isValidLanguage(lang)) {
+  return Astro.redirect(getUrl('/es/'));
+}
+
+const t = (key: string) => getTranslation(lang, key);
+--- 
+<Layout title={t('404.title')} lang={lang}>
+  <div class="text-center py-24 space-y-4">
+    <h1 class="text-5xl font-extrabold">404</h1>
+    <p>{t('404.message')}</p>
+    <a href={getUrl(`/${lang}/`)} class="underline">{t('404.button')}</a>
+  </div>
+</Layout>
