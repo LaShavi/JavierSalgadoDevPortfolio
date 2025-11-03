@@ -1,17 +1,25 @@
 ---
 import '../styles/global.css';
 import { getUrl } from '../utils/url';
+import { getTranslation, type Language, SUPPORTED_LANGUAGES } from '../i18n';
 
 const {
 	title = 'Javier Salgado — Portafolio',
 	description = 'Desarrollador .NET & Angular. Portafolio y proyectos.',
-	canonical
+	canonical,
+	lang = 'es' as Language
 } = Astro.props;
 
 const siteTitle = 'Javier Salgado';
+const t = (key: string) => getTranslation(lang, key);
+
+// Calcular URL del idioma alterno
+const alternateLanguage = lang === 'es' ? 'en' : 'es';
+const currentPath = Astro.url.pathname;
+const alternateUrl = currentPath.replace(`/${lang}/`, `/${alternateLanguage}/`);
 ---
 <!DOCTYPE html>
-<html lang="es">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -56,34 +64,69 @@ const siteTitle = 'Javier Salgado';
     
     <header class="sticky top-0 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 bg-white/90 dark:bg-gray-900/90 z-50 transition-colors duration-300">
       <nav class="mx-auto container px-4 py-3 flex items-center justify-between">
-        <a href={getUrl('/')} class="font-extrabold tracking-tight text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">{siteTitle}</a>
+        <a href={getUrl(`/${lang}/`)} class="font-extrabold tracking-tight text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">{siteTitle}</a>
         <div class="flex items-center gap-2 sm:gap-3 md:gap-4 text-xs sm:text-sm">
-          <a class="hover:underline hover:text-blue-600 dark:hover:text-blue-400 px-1 text-gray-700 dark:text-gray-300 transition-colors" href={getUrl('/')}>Inicio</a>
-          <a class="hover:underline hover:text-blue-600 dark:hover:text-blue-400 px-1 text-gray-700 dark:text-gray-300 transition-colors" href={getUrl('/projects')}>Proyectos</a>
-          <a class="hover:underline hover:text-blue-600 dark:hover:text-blue-400 px-1 text-gray-700 dark:text-gray-300 transition-colors" href="https://github.com/LaShavi" target="_blank" rel="noopener">GitHub</a>
-          <a class="hover:underline hover:text-blue-600 dark:hover:text-blue-400 px-1 text-gray-700 dark:text-gray-300 transition-colors" href="https://www.linkedin.com/in/javier-salgado-arismendy-961956122" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="hover:underline hover:text-blue-600 dark:hover:text-blue-400 px-1 text-gray-700 dark:text-gray-300 transition-colors" href={getUrl(`/${lang}/`)}>{t('nav.home')}</a>
+          <a class="hover:underline hover:text-blue-600 dark:hover:text-blue-400 px-1 text-gray-700 dark:text-gray-300 transition-colors" href={getUrl(`/${lang}/projects`)}>{t('nav.projects')}</a>
+          <a class="hover:underline hover:text-blue-600 dark:hover:text-blue-400 px-1 text-gray-700 dark:text-gray-300 transition-colors" href="https://github.com/LaShavi" target="_blank" rel="noopener">{t('nav.github')}</a>
+          <a class="hover:underline hover:text-blue-600 dark:hover:text-blue-400 px-1 text-gray-700 dark:text-gray-300 transition-colors" href="https://www.linkedin.com/in/javier-salgado-arismendy-961956122" target="_blank" rel="noopener">{t('nav.linkedin')}</a>
 
-          <button 
-            id="themeToggle" 
-            class="p-1.5 sm:p-2 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 hover:border-gray-300 dark:hover:border-gray-600 transition-all ml-1 sm:ml-2 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
-            aria-label="Alternar tema"
-            title="Cambiar tema"
-          >
-            <img 
-              src={getUrl('/images/icon-sun.svg')} 
-              alt="Modo claro" 
-              class="w-4 h-4 sm:w-5 sm:h-5 dark:hidden" 
-              width="20" 
-              height="20"
-            />
-            <img 
-              src={getUrl('/images/icon-moon.svg')} 
-              alt="Modo oscuro" 
-              class="w-4 h-4 sm:w-5 sm:h-5 hidden dark:block" 
-              width="20" 
-              height="20"
-            />
-          </button>
+          <!-- Desktop Controls (Hidden on Mobile) -->
+          <div class="hidden md:flex items-center gap-2">
+            <!-- Language Switcher -->
+            <a 
+              href={alternateUrl}
+              class="inline-flex items-center gap-1.5 px-2 sm:px-2.5 py-1.5 sm:py-2 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 hover:border-gray-300 dark:hover:border-gray-600 transition-all ml-1 sm:ml-2 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
+              title={lang === 'es' ? 'Switch to English' : 'Cambiar a Español'}
+            >
+              {lang === 'es' ? (
+                <>
+                  <img 
+                    src={getUrl('/images/flag-usa.svg')} 
+                    alt="English" 
+                    class="w-5 h-4" 
+                    width="20" 
+                    height="16"
+                  />
+                  <span class="text-xs sm:text-sm font-semibold">EN</span>
+                </>
+              ) : (
+                <>
+                  <img 
+                    src={getUrl('/images/flag-colombia.svg')} 
+                    alt="Español" 
+                    class="w-5 h-4" 
+                    width="20" 
+                    height="16"
+                  />
+                  <span class="text-xs sm:text-sm font-semibold">ES</span>
+                </>
+              )}             
+            </a>
+
+            <button 
+              id="themeToggle" 
+              onclick="toggleTheme()"
+              class="p-1.5 sm:p-2 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 hover:border-gray-300 dark:hover:border-gray-600 transition-all ml-1 sm:ml-2 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
+              aria-label={t('theme.dark')}
+              title={t('theme.light')}
+            >
+              <img 
+                src={getUrl('/images/icon-sun.svg')} 
+                alt={t('theme.light')} 
+                class="w-4 h-4 sm:w-5 sm:h-5 dark:hidden" 
+                width="20" 
+                height="20"
+              />
+              <img 
+                src={getUrl('/images/icon-moon.svg')} 
+                alt={t('theme.dark')} 
+                class="w-4 h-4 sm:w-5 sm:h-5 hidden dark:block" 
+                width="20" 
+                height="20"
+              />
+            </button>
+          </div>
 
         </div>
       </nav>
@@ -94,10 +137,52 @@ const siteTitle = 'Javier Salgado';
     </main>
 
     <footer class="mx-auto container px-4 pb-10 text-sm text-gray-500 dark:text-gray-400 text-center"> 
-      © {new Date().getFullYear()} {siteTitle}. Hecho con 
-      <a href="https://astro.build" target="_blank" rel="noopener" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Astro</a> + 
-      <a href="https://tailwindcss.com" target="_blank" rel="noopener" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Tailwind CSS</a>
+      © {new Date().getFullYear()} {siteTitle}. {t('footer.copyright').replace('{year}', new Date().getFullYear().toString())}
+      <a href="https://astro.build" target="_blank" rel="noopener" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">{t('footer.astro')}</a> + 
+      <a href="https://tailwindcss.com" target="_blank" rel="noopener" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">{t('footer.tailwind')}</a>
     </footer>
+
+    <!-- Floating Action Button (Mobile Only) -->
+    <div class="fixed bottom-6 right-6 md:hidden flex gap-3 z-40">
+      <!-- Language Button -->
+      <a 
+        href={alternateUrl}
+        class="flex items-center justify-center w-14 h-14 rounded-full bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 text-white shadow-lg hover:shadow-xl transition-all transform hover:scale-110"
+        title={lang === 'es' ? 'Switch to English' : 'Cambiar a Español'}
+      >
+        <img 
+          src={lang === 'es' ? getUrl('/images/flag-usa.svg') : getUrl('/images/flag-colombia.svg')}
+          alt={lang === 'es' ? 'English' : 'Español'}
+          class="w-7 h-5.5"
+          width="28"
+          height="22"
+        />
+      </a>
+
+      <!-- Theme Button -->
+      <button 
+        id="themeToggle"
+        onclick="toggleTheme()"
+        class="flex items-center justify-center w-14 h-14 rounded-full bg-gray-700 hover:bg-gray-800 dark:bg-gray-600 dark:hover:bg-gray-700 text-white shadow-lg hover:shadow-xl transition-all transform hover:scale-110"
+        aria-label={t('theme.dark')}
+        title={t('theme.light')}
+      >
+        <img 
+          src={getUrl('/images/icon-sun.svg')} 
+          alt={t('theme.light')} 
+          class="w-6 h-6 dark:hidden" 
+          width="24" 
+          height="24"
+        />
+        <img 
+          src={getUrl('/images/icon-moon.svg')} 
+          alt={t('theme.dark')} 
+          class="w-6 h-6 hidden dark:block" 
+          width="24" 
+          height="24"
+        />
+      </button>
+    </div>
     
     <script src={getUrl('/scripts/theme-toggle.js')} defer></script>
   </body>

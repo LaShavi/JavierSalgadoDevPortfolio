@@ -1,0 +1,66 @@
+{
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
+  },
+  "theme": {
+    "light": "Light mode",
+    "dark": "Dark mode"
+  },
+  "404": {
+    "title": "Page Not Found",
+    "message": "Oops, I couldn't find that route.",
+    "button": "Back to home"
+  },
+  "home": {
+    "title": "Javier Salgado — Full Stack Developer",
+    "subtitle": "Full Stack Developer .NET & Angular",
+    "description1": "Passionate about creating innovative technological solutions and exceptional digital experiences. Specialized in backend development with .NET and modern frontend with Angular.",
+    "description2": "I transform ideas into efficient, scalable, and maintainable code, always seeking best practices and emerging technologies.",
+    "cta_projects": "View Projects",
+    "cta_github": "GitHub",
+    "skills_title": "Technologies & Tools",
+    "backend": "Backend",
+    "frontend": "Frontend",
+    "tools": "Tools",
+    "about_title": "About Me",
+    "about_p1": "I'm a full stack developer with solid experience in the Microsoft ecosystem and modern web technologies. My focus is on creating robust, scalable applications with an excellent user experience.",
+    "about_p2": "I enjoy working both in the backend, designing efficient APIs and solid architectures, and in the frontend, creating intuitive and responsive interfaces that delight users.",
+    "about_p3": "I'm always exploring new technologies and best practices, maintaining a balance between innovation and stability in my projects.",
+    "about_cta": "Let's Connect"
+  },
+  "projects": {
+    "title": "My Projects",
+    "subtitle": "A selection of projects that demonstrate my full stack development skills, from robust APIs to intuitive user interfaces.",
+    "tags": {
+      "netcore": ".NET Core",
+      "angular": "Angular",
+      "typescript": "TypeScript",
+      "sqlserver": "SQL Server"
+    },
+    "cta_title": "Want to know more?",
+    "cta_description": "Check out my GitHub repositories to see more projects and community contributions.",
+    "cta_button": "Visit GitHub",
+    "demo": "View Demo",
+    "code": "View Code",
+    "contact_linkedin": "Contact on LinkedIn",
+    "view_github": "View GitHub",
+    "projects": {
+      "portfolio": {
+        "title": "Personal Portfolio",
+        "description": "This website itself developed with Astro and Tailwind CSS. Includes dark/light theme system, responsive design, GitHub Pages optimized navigation, and modern component architecture."
+      },
+      "decision_tree": {
+        "title": "Decision Tree Calculator",
+        "description": "Web application for the calculation and visualization of decision trees, allowing users to define criteria and options interactively."
+      }
+    }
+  },
+  "footer": {
+    "copyright": "© {year} Javier Salgado. Made with",
+    "astro": "Astro",
+    "tailwind": "Tailwind CSS"
+  }
+}
