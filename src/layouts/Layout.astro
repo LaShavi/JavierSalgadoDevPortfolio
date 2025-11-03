@@ -73,18 +73,30 @@ const alternateUrl = currentPath.replace(`/${lang}/`, `/${alternateLanguage}/`);
             <!-- Language Switcher -->
             <a 
               href={alternateUrl}
-              class="inline-flex items-center justify-center px-2 sm:px-2.5 py-1.5 sm:py-2 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 hover:border-gray-300 dark:hover:border-gray-600 transition-all ml-1 sm:ml-2 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 text-xs sm:text-sm font-semibold whitespace-nowrap"
+              class="inline-flex items-center gap-1.5 px-2 sm:px-2.5 py-1.5 sm:py-2 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 hover:border-gray-300 dark:hover:border-gray-600 transition-all ml-1 sm:ml-2 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
               title={lang === 'es' ? 'Switch to English' : 'Cambiar a Español'}
             >
               {lang === 'es' ? (
                 <>
-                  <span class="text-gray-400 dark:text-gray-600 mr-1.5">|</span>
-                  <span>🇬🇧 EN</span>
+                  <img 
+                    src={getUrl('/images/flag-usa.svg')} 
+                    alt="English" 
+                    class="w-5 h-4" 
+                    width="20" 
+                    height="16"
+                  />
+                  <span class="text-xs sm:text-sm font-semibold">EN</span>
                 </>
               ) : (
                 <>
-                  <span>🇪🇸 ES</span>
-                  <span class="text-gray-400 dark:text-gray-600 ml-1.5">|</span>
+                  <img 
+                    src={getUrl('/images/flag-colombia.svg')} 
+                    alt="Español" 
+                    class="w-5 h-4" 
+                    width="20" 
+                    height="16"
+                  />
+                  <span class="text-xs sm:text-sm font-semibold">ES</span>
                 </>
               )}             
             </a>
@@ -135,7 +147,13 @@ const alternateUrl = currentPath.replace(`/${lang}/`, `/${alternateLanguage}/`);
         class="flex items-center justify-center w-14 h-14 rounded-full bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 text-white shadow-lg hover:shadow-xl transition-all transform hover:scale-110"
         title={lang === 'es' ? 'Switch to English' : 'Cambiar a Español'}
       >
-        <span class="text-xl">{lang === 'es' ? '🇬🇧' : '🇪🇸'}</span>
+        <img 
+          src={lang === 'es' ? getUrl('/images/flag-usa.svg') : getUrl('/images/flag-colombia.svg')}
+          alt={lang === 'es' ? 'English' : 'Español'}
+          class="w-7 h-5.5"
+          width="28"
+          height="22"
+        />
       </a>
 
       <!-- Theme Button -->
