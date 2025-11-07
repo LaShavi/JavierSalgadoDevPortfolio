@@ -55,6 +55,10 @@
       "decision_tree": {
         "title": "Decision Tree Calculator",
         "description": "Web application for the calculation and visualization of decision trees, allowing users to define criteria and options interactively."
+      },
+      "hexagonal_template": {
+        "title": "Hexagonal Template - Professional .NET 8 API",
+        "description": "Robust enterprise template for REST APIs with hexagonal architecture, enterprise-level security, automated testing (58+ tests), internationalization and professional email notification system."
       }
     }
   },

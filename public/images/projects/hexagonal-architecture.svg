@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <!-- Fondo -->
+  <rect width="400" height="300" fill="#F8FAFC"/>
+  
+  <!-- Hexágono central (Domain) -->
+  <g>
+    <!-- Hexágono interior (Domain) -->
+    <polygon points="200,80 250,110 250,170 200,200 150,170 150,110" fill="#4F46E5" opacity="0.9"/>
+    <text x="200" y="145" font-size="14" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">Domain</text>
+  </g>
+  
+  <!-- Capas alrededor del hexágono -->
+  <!-- Capa Application (arriba) -->
+  <g>
+    <rect x="140" y="10" width="120" height="50" rx="4" fill="#7C3AED" opacity="0.8"/>
+    <text x="200" y="40" font-size="13" font-weight="bold" fill="white" text-anchor="middle">Application</text>
+  </g>
+  
+  <!-- Capa Infrastructure (derecha-arriba) -->
+  <g>
+    <rect x="290" y="60" width="100" height="60" rx="4" fill="#0891B2" opacity="0.8"/>
+    <text x="340" y="85" font-size="11" font-weight="bold" fill="white" text-anchor="middle">Infrastructure</text>
+    <text x="340" y="103" font-size="10" fill="white" text-anchor="middle">(BD, Email)</text>
+  </g>
+  
+  <!-- Capa API (derecha-abajo) -->
+  <g>
+    <rect x="290" y="170" width="100" height="60" rx="4" fill="#0891B2" opacity="0.8"/>
+    <text x="340" y="195" font-size="13" font-weight="bold" fill="white" text-anchor="middle">API</text>
+    <text x="340" y="213" font-size="10" fill="white" text-anchor="middle">(HTTP)</text>
+  </g>
+  
+  <!-- Capa Tests (abajo) -->
+  <g>
+    <rect x="140" y="240" width="120" height="50" rx="4" fill="#06B6D4" opacity="0.8"/>
+    <text x="200" y="265" font-size="12" font-weight="bold" fill="white" text-anchor="middle">Tests (58+)</text>
+  </g>
+  
+  <!-- Capa Adapters (izquierda) -->
+  <g>
+    <rect x="10" y="100" width="100" height="100" rx="4" fill="#0891B2" opacity="0.8"/>
+    <text x="60" y="145" font-size="11" font-weight="bold" fill="white" text-anchor="middle">Adapters</text>
+    <text x="60" y="163" font-size="9" fill="white" text-anchor="middle">(Ports)</text>
+  </g>
+  
+  <!-- Líneas de conexión -->
+  <line x1="200" y1="80" x2="200" y2="60" stroke="#64748B" stroke-width="2" stroke-dasharray="4"/>
+  <line x1="260" y1="120" x2="290" y2="90" stroke="#64748B" stroke-width="2" stroke-dasharray="4"/>
+  <line x1="260" y1="160" x2="290" y2="200" stroke="#64748B" stroke-width="2" stroke-dasharray="4"/>
+  <line x1="200" y1="200" x2="200" y2="240" stroke="#64748B" stroke-width="2" stroke-dasharray="4"/>
+  <line x1="140" y1="160" x2="110" y2="150" stroke="#64748B" stroke-width="2" stroke-dasharray="4"/>
+  
+  <!-- Etiquetas de características -->
+  <g opacity="0.7">
+    <text x="20" y="285" font-size="9" fill="#475569">🔒 JWT • 🔐 BCrypt • 📧 Email</text>
+    <text x="200" y="285" font-size="9" fill="#475569" text-anchor="middle">🌍 i18n • 🧪 xUnit</text>
+  </g>
+</svg>

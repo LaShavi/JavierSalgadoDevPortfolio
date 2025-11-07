@@ -55,6 +55,10 @@
       "decision_tree": {
         "title": "Calculadora de Árbol de Decisiones",
         "description": "Aplicación web para el cálculo y visualización de árboles de decisiones, permitiendo a los usuarios definir criterios y opciones de manera interactiva."
+      },
+      "hexagonal_template": {
+        "title": "Plantilla Hexagonal - API .NET 8 Profesional",
+        "description": "Plantilla empresarial robusta para APIs REST con arquitectura hexagonal, seguridad de nivel empresarial, testing automatizado (58+ pruebas), internacionalización y sistema de notificaciones por email profesional."
       }
     }
   },
